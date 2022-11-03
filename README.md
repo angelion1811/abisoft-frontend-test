@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Pautas dadas por el desarrollador
+
+#1 Para la ejecion de Front debe tener intalado la version de node 16.15.1 y la verion de angular utilizada es la 14.2.0
+
+#2 en caso de no tenerlo instalado desacargar la version mencionana y despues dentro de la carpeta raiz donde se encuentra el proyecto correr el siguiente comando de consola: npm install 
+
