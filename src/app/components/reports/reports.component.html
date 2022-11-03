@@ -1,0 +1,127 @@
+<app-base>
+  <mat-toolbar color="primary">
+    <span>Reportes</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+  <mat-card>
+      <mat-card-header>
+          <mat-card-title>Reportes</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-tab-group mat-align-tabs="center">
+          <mat-tab label="Pruebas (Nivel General)">
+            <div fxFlexFill fxLayoutAlign="center top">
+              <table mat-table [dataSource]="tests_data" class="mat-elevation-z8" fxFlexFill>
+                <ng-container matColumnDef="usuario">
+                  <th mat-header-cell *matHeaderCellDef> Usuario </th>
+                  <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>
+                </ng-container>
+                <ng-container matColumnDef="equipo">
+                  <th mat-header-cell *matHeaderCellDef> Equipo </th>
+                  <td mat-cell *matCellDef="let element"> {{element.item.name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="ipv4">
+                  <th mat-header-cell *matHeaderCellDef> Ip </th>
+                  <td mat-cell *matCellDef="let element"> {{element.item.ipv4}} </td>
+                </ng-container>
+                <ng-container matColumnDef="resultado">
+                  <th mat-header-cell *matHeaderCellDef> Resultado </th>
+                  <td mat-cell *matCellDef="let element"> {{element.confirmed?'Afirmativeo':'Negativo'}} </td>
+                </ng-container>
+                <ng-container matColumnDef="fecha">
+                  <th mat-header-cell *matHeaderCellDef> Ip </th>
+                  <td mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsGeneral"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsGeneral;"></tr>
+              </table>
+            </div>
+          </mat-tab>
+          <mat-tab label="Pruebas de usuarios">
+            <mat-card>
+                <mat-card-header>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Usuarios</mat-label>
+                    <mat-select [(ngModel)]="user_id" name="user">
+                      <mat-option *ngFor="let user of users" [value]="user['id']" (onSelectionChange)="getTestsByUser()">
+                        {{user['name']}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-card-header>
+                <mat-card-content>
+                  <div fxFlexFill fxLayoutAlign="center top">
+                    <table mat-table [dataSource]="tests_by_user_data" class="mat-elevation-z8" fxFlexFill>
+                      <ng-container matColumnDef="usuario">
+                        <th mat-header-cell *matHeaderCellDef> Usuario </th>
+                        <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="equipo">
+                        <th mat-header-cell *matHeaderCellDef> Equipo </th>
+                        <td mat-cell *matCellDef="let element"> {{element.item.name}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="ipv4">
+                        <th mat-header-cell *matHeaderCellDef> Ip </th>
+                        <td mat-cell *matCellDef="let element"> {{element.item.ipv4}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="resultado">
+                        <th mat-header-cell *matHeaderCellDef> Resultado </th>
+                        <td mat-cell *matCellDef="let element"> {{element.confirmed?'Afirmativeo':'Negativo'}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="fecha">
+                        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                        <td mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+                      </ng-container>
+                      <tr mat-header-row *matHeaderRowDef="displayedColumnsGeneral"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumnsGeneral;"></tr>
+                    </table>
+                  </div>
+                </mat-card-content>
+            </mat-card>
+          </mat-tab>
+          <mat-tab label="Pruebas de Equipo">
+            <mat-card>
+              <mat-card-header>
+                <mat-form-field appearance="fill">
+                  <mat-label>Equipos</mat-label>
+                  <mat-select [(ngModel)]="item_id" name="item">
+                    <mat-option *ngFor="let item of items" [value]="item['id']" (onSelectionChange)="getTestsToItem(item_id)">
+                      {{item['name']}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-card-header>
+              <mat-card-content>
+                <div fxFlexFill fxLayoutAlign="center top">
+                  <table mat-table [dataSource]="tests_to_item_data" class="mat-elevation-z8" fxFlexFill>
+                    <ng-container matColumnDef="usuario">
+                      <th mat-header-cell *matHeaderCellDef> Usuario </th>
+                      <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="equipo">
+                      <th mat-header-cell *matHeaderCellDef> Equipo </th>
+                      <td mat-cell *matCellDef="let element"> {{element.item.name}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="ipv4">
+                      <th mat-header-cell *matHeaderCellDef> Ip </th>
+                      <td mat-cell *matCellDef="let element"> {{element.item.ipv4}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="resultado">
+                      <th mat-header-cell *matHeaderCellDef> Resultado </th>
+                      <td mat-cell *matCellDef="let element"> {{element.confirmed?'Afirmativeo':'Negativo'}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="fecha">
+                      <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                      <td mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsGeneral"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsGeneral;"></tr>
+                  </table>
+                </div>
+              </mat-card-content>
+          </mat-card>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+  </mat-card>
+</app-base>

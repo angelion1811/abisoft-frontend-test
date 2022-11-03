@@ -1,0 +1,83 @@
+<app-base>
+  <mat-toolbar color="primary">
+    <span>Estadisticas Generales</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+  <div fxFlexFill fxLayoutAlign="center space-arround" fxLayout="column">
+    <div fyFlex="20">
+    </div>
+    <div fyFlex="30" fxLayout="row" fxLayoutAlign="center center">
+      <mat-card fxFlex="40">
+        <mat-card-header>
+            <mat-card-title>Estatus General de pruebas</mat-card-title>
+            <mat-card-subtitle>Grafica</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div style="display: block">
+            <canvas baseChart
+              [data]="barChartDataGeneralReport"
+              [options]="barChartOptionsGeneralReport"
+              [plugins]="barChartPlugins"
+              [type]="barChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+            </canvas>
+          </div>
+          <button mat-button mat-raised-button color="primary" (click)="getGeneralReport()">Actualizar reporte General</button>
+        </mat-card-content>
+      </mat-card>
+      <div fxFlex="10"></div>
+      <mat-card fxFlex="40">
+        <mat-card-header>
+            <mat-card-title>Estatus de Pruebas por Usuario</mat-card-title>
+            <mat-card-subtitle>Grafica</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div style="display: block">
+            <canvas baseChart
+              [data]="barChartDataByUsers"
+              [options]="barChartOptionsByUsers"
+              [plugins]="barChartPlugins"
+              [type]="barChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+            </canvas>
+          </div>
+          <button mat-button mat-raised-button color="primary" (click)="getTestsByUsers()">Actualizar Graficas por Usuarios</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div fyFlex="10"></div>
+    <div fyFlex="30" fxLayout="row" fxLayoutAlign="center center">
+      <mat-card fxFlex="40">
+        <mat-card-header>
+            <mat-card-title>Estatus General de pruebas</mat-card-title>
+            <mat-card-subtitle>Grafica</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div style="display: block">
+            <canvas baseChart
+              [data]="barChartDataToItems"
+              [options]="barChartOptionsToItems"
+              [plugins]="barChartPlugins"
+              [type]="barChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+            </canvas>
+          </div>
+          <button mat-button mat-raised-button color="primary" (click)="getTestsToItems()">Actualizar Grafica por Equipos</button>
+        </mat-card-content>
+      </mat-card>
+      <div fxFlex="10"></div>
+      <div fxFlex="40">
+
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+
+</app-base>
