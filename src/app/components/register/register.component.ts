@@ -4,11 +4,12 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
+
   formGroup: FormGroup;
 
   constructor(private authService: AuthService, private router: Router) {}
@@ -20,23 +21,21 @@ export class LoginComponent implements OnInit {
   initForm(){
     this.formGroup = new FormGroup({
       email: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
+      password_confirmation: new FormControl('', [Validators.required]),
     });
   }
 
-  login(){
+  register(){
     if(this.formGroup.valid){
-      this.authService.login(this.formGroup.value).subscribe(result =>{
+      this.authService.register(this.formGroup.value).subscribe(result =>{
         if(result.token){
           localStorage.setItem("token", result.token);
           this.router.navigate(['dashboard']);
         }
       });
     }
-  }
-
-  toRegister(){
-    this.router.navigate(['register']);
   }
 
 }

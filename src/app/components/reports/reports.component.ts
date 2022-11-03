@@ -59,6 +59,7 @@ export class ReportsComponent implements OnInit {
   }
 
   getTestsByUser(){
+    this.tests_by_user_data = [];
     this.testService.getTestsByUser(this.user_id).subscribe(result=>{
       this.tests_by_user_data = [];
       this.tests_by_user_data = result.data;
@@ -67,6 +68,7 @@ export class ReportsComponent implements OnInit {
   }
 
   getTestsToItem(item_id:any){
+    this.tests_to_item_data = [];
     this.testService.getTestsToItem(item_id).subscribe(result=>{
       this.tests_to_item_data = [];
       this.tests_to_item_data = result.data;

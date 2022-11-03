@@ -19,6 +19,12 @@ export class AuthService {
     );
   }
 
+  register(data: any):Observable<any>{
+    return this.http.post(`${baseUrl}/register`,data).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: Response | any) {
     let errorMessage = '';
     if (error.status == 0) {

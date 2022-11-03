@@ -1,18 +1,24 @@
 <div fxLayoutAlign="center center" fxFlexFill>
   <mat-card fxFlex="25">
     <mat-toolbar color="primary">
-      Inicio Sesion
+      Inicio Sesión
     </mat-toolbar>
-    <form fxLayoutAlign="stretch" fxLayout="column" [formGroup]="formGroup" (ngSubmit)="loginProcess()">
+    <form fxLayoutAlign="stretch" fxLayout="column" [formGroup]="formGroup" (ngSubmit)="login()">
       <mat-form-field>
+        <mat-label>Email</mat-label>
         <input matInput placeholder="Email" formControlName="email">
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Input</mat-label>
+        <mat-label>Contraseña</mat-label>
         <input matInput type="password" placeholder="Password" formControlName="password">
       </mat-form-field>
       <button mat-raised-button type="submit">
-        Iniciar Sesion
+        Iniciar Sesión
+      </button>
+      <hr>
+      <div fyFlex="30"></div>
+      <button mat-raised-button type="button" (click)="toRegister()">
+        Registro
       </button>
     </form>
   </mat-card>
