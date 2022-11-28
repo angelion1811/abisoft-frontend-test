@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Agregar Persona</h2>
+<mat-dialog-content class="mat-typography">
+  <form fxLayoutAlign="stretch" fxLayout="column" [formGroup]="formGroup">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="Nombre" formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Apellido</mat-label>
+      <input matInput placeholder="Apellido" formControlName="last_name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>edad</mat-label>
+      <input matInput placeholder="Edad" formControlName="age" type="number">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Fecha de nacimiento</mat-label>
+      <input matInput placeholder="Fecha de nacimiento" formControlName="birthday" type="date">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Fecha de registro</mat-label>
+      <input matInput placeholder="Fecha de inscripcion" formControlName="registered" type="date">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Precio</mat-label>
+      <input matInput placeholder="Costo" formControlName="price" type="number">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button
+    cdkFocusInitial
+    (click)="addPerson()"
+  >
+    <mat-icon>
+      add
+    </mat-icon>
+    <span>
+      Agregar
+    </span>
+  </button>
+</mat-dialog-actions>

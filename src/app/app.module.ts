@@ -27,6 +27,9 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { ItemEditComponent } from './components/item-edit/item-edit.component';
 import { ItemAddComponent } from './components/item-add/item-add.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PersonAddComponent } from './components/person-add/person-add.component';
+import { PersonEditComponent } from './components/person-edit/person-edit.component';
+import { PersonComponent } from './components/person/person.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +40,10 @@ import { RegisterComponent } from './components/register/register.component';
     ReportsComponent,
     ItemEditComponent,
     ItemAddComponent,
-    RegisterComponent
+    RegisterComponent,
+    PersonAddComponent,
+    PersonEditComponent,
+    PersonComponent
   ],
   imports: [
     BrowserModule,
